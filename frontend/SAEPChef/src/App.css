@@ -1,0 +1,316 @@
+@font-face {
+ font-family: "Poppins";
+ src: url("assets/fontes/Poppins-Regular.ttf");
+ font-weight: 400;
+}
+@font-face {
+ font-family: "Poppins";
+ src: url("assets/fontes/Poppins-SemiBold.ttf");
+ font-weight: 600;
+}
+:root {
+ --branco: #ffffff;
+ --verde: #1b3c29;
+ --amarelo: #f6a823;
+ --erro: #b42318;
+}
+* {
+ box-sizing: border-box;
+}
+body {
+ min-height: 100vh;
+ margin: 0;
+ color: #252525;
+ background: var(--branco);
+ font-family: "Poppins", Arial, sans-serif;
+ display: flex;
+ flex-direction: column;
+}
+button,
+input {
+ font: inherit;
+}
+.escondido {
+ display: none !important;
+}
+.cabecalho {
+ min-height: 104px;
+ padding: 18px 5%;
+ border-bottom: 1px solid #d8d8d8;
+ display: grid;
+ grid-template-columns: 1fr auto 1fr;
+ align-items: center;
+ gap: 24px;
+}
+.usuario-cabecalho {
+ display: flex;
+ align-items: center;
+ gap: 12px;
+}
+.usuario-cabecalho > img {
+ width: 64px;
+ height: 64px;
+ border-radius: 50%;
+ object-fit: cover;
+}
+.usuario-cabecalho div {
+ display: grid;
+ gap: 5px;
+ justify-items: start;
+}
+.marca {
+ color: var(--verde);
+ font-size: 2rem;
+ font-weight: 600;
+ text-decoration: none;
+}
+#botaoLogin {
+ justify-self: end;
+}
+.botao {
+ min-height: 40px;
+ padding: 9px 20px;
+ border: 2px solid var(--verde);
+ border-radius: 5px;
+ cursor: pointer;
+ font-weight: 600;
+}
+.botao-escuro {
+ color: var(--branco);
+ background: var(--verde);
+}
+.botao-contorno {
+ color: var(--verde);
+ background: transparent;
+}
+.rodape {
+ min-height: 92px;
+ padding: 22px 5%;
+ color: var(--branco);
+ background: var(--verde);
+ display: grid;
+ grid-template-columns: 1fr auto 1fr;
+ align-items: center;
+ gap: 25px;
+}
+.rodape > span {
+ justify-self: end;
+}
+.redes {
+ display: flex;
+ align-items: center;
+ gap: 22px;
+}
+.redes a {
+ width: 25px;
+ height: 25px;
+}
+.redes img {
+ width: 100%;
+ height: 100%;
+ object-fit: contain;
+ filter: brightness(0) invert(1);
+}
+.conteudo {
+ width: min(1080px, calc(100% - 40px));
+ margin: 0 auto;
+ padding: 52px 0 68px;
+ flex: 1;
+}
+.mural {
+ display: grid;
+ grid-template-columns: repeat(3, 1fr);
+ gap: 34px 28px;
+}
+.imagem-receita {
+ position: relative;
+ aspect-ratio: 1;
+ border-radius: 7px;
+ overflow: hidden;
+ background: #eeeeee;
+}
+.imagem-receita > img {
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+ display: block;
+}
+.dados-receita {
+ padding-top: 10px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.dados-receita h2 {
+ margin: 0;
+ color: var(--verde);
+ font-size: 1rem;
+}
+.favoritar {
+ padding: 2px;
+ border: 0;
+ color: var(--verde);
+ background: transparent;
+ display: flex;
+ align-items: center;
+ gap: 5px;
+ cursor: pointer;
+}
+.icone-estrela {
+ width: 24px;
+ height: 24px;
+ background: var(--verde);
+ mask: url("anexos_prova/icones/estrela.svg")
+ center / contain no-repeat;
+}
+.favoritar.ativo .icone-estrela {
+ background: var(--amarelo);
+}
+.tooltip {
+ position: absolute;
+ left: 12px;
+ right: 12px;
+ bottom: 12px;
+ padding: 12px;
+ border-radius: 5px;
+ color: var(--branco);
+ background: rgb(27 60 41 / 92%);
+ font-size: 0.82rem;
+ opacity: 0;
+ transform: translateY(8px);
+ transition: 0.2s;
+ pointer-events: none;
+}
+.imagem-receita:hover .tooltip {
+ opacity: 1;
+ transform: translateY(0);
+}
+
+.modal {
+ position: fixed;
+ inset: 0;
+ padding: 20px;
+ background: rgb(0 0 0 / 64%);
+ display: grid;
+ place-items: center;
+ z-index: 20;
+}
+.modal-conteudo {
+ width: min(460px, 100%);
+ padding: 32px;
+ border-radius: 8px;
+ background: var(--branco);
+ position: relative;
+}
+.modal-conteudo h2 {
+ margin-top: 0;
+ color: var(--verde);
+ text-align: center;
+}
+.botao-icone{
+    position: absolute;
+    right: 40px;
+}
+.img-modal{
+    width: 20px;
+    height: 25px;
+}
+.campo {
+ margin-bottom: 17px;
+}
+.campo label {
+ display: block;
+ margin-bottom: 6px;
+ color: var(--verde);
+ font-weight: 600;
+}
+.campo input {
+ width: 100%;
+ min-height: 46px;
+ padding: 10px 12px;
+ border: 1px solid #8b8b8b;
+ border-radius: 5px;
+}
+.erro,
+.erro-login {
+ min-height: 18px;
+ color: var(--erro);
+}
+.acoes-login {
+ display: flex;
+ justify-content: flex-end;
+ gap: 12px;
+}
+.busca {
+ width: min(680px, 100%);
+ height: 52px;
+ margin: 0 auto 30px;
+ border: 2px solid var(--verde);
+ border-radius: 6px;
+ display: flex;
+ overflow: hidden;
+}
+.busca input {
+ min-width: 0;
+ padding: 0 17px;
+ border: 0;
+ outline: 0;
+ flex: 1;
+}
+.busca button {
+ width: 55px;
+ padding: 13px;
+ border: 0;
+ background: var(--branco);
+ cursor: pointer;
+}
+.busca img {
+ width: 100%;
+ height: 100%;
+}
+.mensagem-busca {
+ min-height: 25px;
+ color: var(--erro);
+ text-align: center;
+}
+.painel-perfil {
+ width: min(390px, 88vw);
+ height: 100vh;
+ padding: 74px 30px 30px;
+ position: fixed;
+ top: 0;
+ left: 0;
+ background: var(--branco);
+ box-shadow: 8px 0 35px rgb(0 0 0 / 20%);
+ text-align: center;
+ transform: translateX(-105%);
+ transition: transform 0.25s;
+ z-index: 15;
+}
+.painel-perfil.aberto {
+ transform: translateX(0);
+}
+.foto-perfil {
+ width: 118px;
+ height: 118px;
+ border-radius: 50%;
+ object-fit: cover;
+}
+.numeros-perfil {
+ margin: 32px 0;
+ display: grid;
+ grid-template-columns: 1fr 1fr;
+}
+.numeros-perfil p {
+ display: grid;
+}
+.suas-receitas {
+ width: 100%;
+ padding: 14px;
+ border: 2px solid var(--verde);
+ border-right: 0;
+ border-left: 0;
+ color: var(--verde);
+ background: transparent;
+ cursor: pointer;
+}
