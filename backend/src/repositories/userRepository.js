@@ -2,7 +2,9 @@ import { query } from "../config/db.js";
 
 export const userRepository = {
     async findById(id_usuario){
-        const res = await query('SELECT * FROM tb_usuario WHERE id_usuario = $1', [id_usuario]);
+        console.log('chegou no repository')
+        const res = await query('SELECT * FROM tb_usuario WHERE id_usuario = $1;', [id_usuario]);
+        console.log('o banco retornou')
         return res.rows[0]
     },
     async findByEmail(email, senha){

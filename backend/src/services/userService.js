@@ -12,7 +12,7 @@ export const userService = {
         }
 
         if(!user){
-            throw new Error("Email ou senha invalidos!")
+            return null
         }
 
         return user

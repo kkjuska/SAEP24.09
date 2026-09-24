@@ -13,6 +13,7 @@ function App() {
   const [erro, setErro] = useState('')
 
   async function entrar() {
+    console.log('CHAMOU A FUNÇÃO ENTRAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     e.preventDefault()
     setErro('')
 
@@ -28,7 +29,10 @@ function App() {
         })
       })
 
+      console.log(response.body)
+
       const data = await response.json()
+      console.log(data)
 
       if (!response.ok) {
         throw new Error('Email ou senha invalidos!')
@@ -43,30 +47,30 @@ function App() {
   }
 
   return (
-      <div>
-        <header class="cabecalho">
-          <section class="usuario-cabecalho">
+      <div> 
+        <header className="cabecalho">
+          <section className="usuario-cabecalho">
             <img id="fotoUsuario"
               src="/saepChef.jpg"
               alt="Foto do usuário"/>
               <div>
                 <strong id="nomeUsuario">@SAEPChef</strong>
                 <button id="botaoPerfil"
-                  class="botao botao-escuro">
+                  className="botao botao-escuro">
                   Ver Perfil
                 </button>
               </div>
           </section>
-          <a class="marca" href="#">SAEPChef</a>
+          <a className="marca" href="#">SAEPChef</a>
           <button id="botaoLogin" onClick={() => setLoginAberto(true)}
-            class="botao botao-escuro">
+            className="botao botao-escuro">
             Login
           </button>
         </header>
-        <main class="conteudo">
+        <main className="conteudo">
           <section id="secaoMural">
-            <div id="muralReceitas" class="mural"></div>
-            <form id="formBusca" class="busca">
+            <div id="muralReceitas" className="mural"></div>
+            <form id="formBusca" className="busca">
               <input id="campoBusca"
                 type="search"
                 placeholder="Digite o nome do chef... ex: @chef1"/>
@@ -74,17 +78,17 @@ function App() {
                   <img src="/lupa.svg" alt=""/>
                 </button>
             </form>
-            <p id="mensagemBusca" class="mensagem-busca"></p>
+            <p id="mensagemBusca" className="mensagem-busca"></p>
           </section>
         </main>
-        <aside id="painelPerfil" class="painel-perfil">
-          <button id="fecharPerfil" class="botao-icone">
+        <aside id="painelPerfil" className="painel-perfil">
+          <button id="fecharPerfil" className="botao-icone">
             <img src="/close.svg" alt="Fechar"/>
           </button>
-          <img id="fotoPerfil" class="foto-perfil"
+          <img id="fotoPerfil" className="foto-perfil"
             alt="Foto do chef"/>
             <h2 id="nomePerfil"></h2>
-            <div class="numeros-perfil">
+            <div className="numeros-perfil">
               <p>
                 <strong id="totalFavoritos">0</strong>
                 <span>Favoritos</span>
@@ -95,13 +99,13 @@ function App() {
               </p>
             </div>
             <button id="botaoSuasReceitas"
-              class="suas-receitas">
+              className="suas-receitas">
               Suas receitas
             </button>
         </aside>
-        <footer class="rodape">
+        <footer className="rodape">
 
-          <nav class="redes" aria-label="Redes sociais">
+          <nav className="redes" aria-label="Redes sociais">
             <a href="#" aria-label="Instagram">
               <img src="/instagram.svg" alt=""/>
             </a>
@@ -117,36 +121,33 @@ function App() {
           </nav>
           <span>Copyright 2026-2027</span>
         </footer>
-        {loginAberto && (<div id="modalLogin" class="modal">
-          <div class="modal-conteudo">
-            <button id="fecharLogin" class="botao-icone" onClick={() => {setLoginAberto(false)}}>
+        {loginAberto && (<div id="modalLogin" className="modal">
+          <div className="modal-conteudo">
+            <button id="fecharLogin" className="botao-icone" onClick={() => {setLoginAberto(false)}}>
               <img src="/close.svg"
-                alt="Fechar login" class="img-modal"/>
+                alt="Fechar login" className="img-modal"/>
             </button>
             <h2>Login</h2>
-            <form id="formLogin" novalidate>
-              <div class="campo">
-                <label for="email">E-mail</label>
+            <form id="formLogin" noValidate onSubmit={entrar}>
+              <div className="campo">
+                <label htmlFor="email">E-mail</label>
                 <input id="email" type="email"
                   placeholder="Digite seu e-mail" value={email} onChange={(e) => setEmail(e.target.value)}/>
-                  <small id="erroEmail" class="erro"></small>
+                  <small id="erroEmail" className="erro"></small>
               </div>
-              <div class="campo">
-                <label for="senha">Senha</label>
+              <div className="campo">
+                <label htmlFor="senha">Senha</label>
                 <input id="senha" type="password"
                   placeholder="Digite sua senha" value={senha} onChange={(e) => setSenha(e.target.value)}/>
-                  <small id="erroSenha" class="erro"></small>
+                  <small id="erroSenha" className="erro"></small>
               </div>
-              <p id="erroLogin" class="erro-login"></p>
-              <div class="acoes-login">
+              <p id="erroLogin" className="erro-login"></p>
+              <div className="acoes-login">
                 <button id="cancelarLogin"
-                  class="botao botao-contorno"
+                  className="botao botao-contorno"
                   type="button" onClick={() => {setLoginAberto(false)}}>Cancelar</button>
-                <button class="botao botao-escuro"
-                  type="submit" onSubmit={(e) => {
-                    e.preventDefault();
-                    entrar();
-                  }}>Login</button>
+                <button className="botao botao-escuro"
+                  type="submit" >Login</button>
               </div>
             </form>
           </div>
