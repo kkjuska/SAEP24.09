@@ -8,7 +8,7 @@ const pool = new pg.Pool({
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
-    port: Number(process.env.PORT)
+    port: Number(process.env.DB_PORT)
 })
 
 export const query = (text, params) => pool.query(text, params)

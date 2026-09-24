@@ -5,6 +5,7 @@ export const userService = {
         return await userRepository.findById(id_usuario);
     },
     async login(reqUser){
+        console.log(reqUser)
         const user = await userRepository.findByEmail(reqUser.email, reqUser.senha)
 
         if (user){

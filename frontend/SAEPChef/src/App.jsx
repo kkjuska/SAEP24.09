@@ -12,7 +12,7 @@ function App() {
   }
   const [erro, setErro] = useState('')
 
-  async function entrar() {
+  async function entrar(e) {
     console.log('CHAMOU A FUNÇÃO ENTRAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
     e.preventDefault()
     setErro('')
